@@ -54,7 +54,7 @@ export async function getStaticPaths() {
   }))
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
@@ -70,5 +70,5 @@ const getDataProps = (id) => {
 
 export async function getStaticProps({ params }) {
   const post = await getDataProps(params.id)
-  return { props: { post }, revalidate: 10 }
+  return { props: { post }, revalidate: 100 }
 }
