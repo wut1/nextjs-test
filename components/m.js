@@ -1,5 +1,5 @@
 
 
-export default function M()=>{
+export default function M(){
     return <>我是测试</>
 }
