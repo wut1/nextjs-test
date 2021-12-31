@@ -26,6 +26,7 @@ export default function FirstPost(props) {
       </h2>
       <p>{JSON.stringify(props)}</p>
       {num === '1' && <DynamicLayout />}
+      <Test />
       <Mdy />
     </>
   )
@@ -64,5 +65,5 @@ const getDataProps = (id) => {
 
 export async function getStaticProps({ params }) {
   const post = await getDataProps(params.id)
-  return { props: { post }, revalidate: 10 }
+  return { props: { post }, revalidate: 120 }
 }
