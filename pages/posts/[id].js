@@ -26,25 +26,19 @@ export default function FirstPost(props) {
       </h2>
       <p>{JSON.stringify(props)}</p>
       {num === '1' && <DynamicLayout />}
-      <Test />
       <Mdy />
     </>
   )
 }
 
-const getData = () => {
-  let list = []
-  for (let index = 0; index < 1000; index++) {
-    list.push({ id: index })
-    
-  }
-  return new Promise((resolve, reject) => {
-   
+const getData = async () => {
+  const response = await fetch('https://getman.cn/mock/api')
+  const max = await response.json()
+  const length = +max || 10
 
-    setTimeout(() => {
-      resolve(list)
-    }, 300)
-  })
+  const list = [{ id: length }]
+
+  return list
 }
 
 export async function getStaticPaths() {
@@ -70,5 +64,5 @@ const getDataProps = (id) => {
 
 export async function getStaticProps({ params }) {
   const post = await getDataProps(params.id)
-  return { props: { post }, revalidate: 100 }
+  return { props: { post }, revalidate: 10 }
 }
