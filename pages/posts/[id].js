@@ -33,8 +33,13 @@ export default function FirstPost(props) {
 }
 
 const getData = () => {
+  let list = []
+  for (let index = 0; index < 1000; index++) {
+    list.push({ id: index })
+    
+  }
   return new Promise((resolve, reject) => {
-    let list = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 88 }]
+   
 
     setTimeout(() => {
       resolve(list)
